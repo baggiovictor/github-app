@@ -8,16 +8,14 @@
         "standard-with-typescript",
         "prettier"
     ],
-    "overrides": [
-    ],
+    "overrides": [],
     "parserOptions": {
-        "project": ["./tsconfig"],
+        "project": "./tsconfig.json",
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
     "plugins": [
         "react"
     ],
-    "rules": {
-    }
+    "rules": {}
 }

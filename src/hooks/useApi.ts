@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { fetchData } from '../utils/fetchData';
+import { useState, useEffect } from "react";
+import { fetchData } from "../utils/fetchData";
 
 export const useApiData = (url: string) => {
   const [data, setData] = useState(null);
@@ -9,7 +9,6 @@ export const useApiData = (url: string) => {
       const apiData = await fetchData(url);
       setData(apiData);
     };
-
     fetchDataFromApi();
   }, [url]);
 

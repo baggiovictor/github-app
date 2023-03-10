@@ -14,6 +14,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 16px;
+  align-items: center;
 
   > p {
     font-size: 16px;
@@ -97,7 +98,7 @@ export const RepoIcon = styled(RiBookMarkLine)`
   ${iconCss}
 `;
 
-export const StartIcon = styled(RiStarLine)`
+export const StarsIcon = styled(RiStarLine)`
   ${iconCss}
 `;
 

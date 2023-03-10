@@ -14,17 +14,16 @@ import {
 } from "./styles";
 
 interface Props {
-    username: string;
-    name: string;
-    avatarUrl: string;
-    followers: number;
-    following: number;
+    username?: string;
+    name?: string;
+    avatarUrl?: string;
+    followers?: number;
+    following?: number;
     company?: string;
     location?: string;
     email?: string;
-    blog: string;
+    blog?: string;
 }
-
 const ProfileData: React.FC<Props> = ({
     username,
     name,

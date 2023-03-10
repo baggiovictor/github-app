@@ -26,6 +26,7 @@ export const SearchForm = styled.form`
     background: var(--search);
     outline: 0;
     border-radius: 6px;
+    color: white;
     padding: 7px 12px;
     width: 100%;
     &:focus {

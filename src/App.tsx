@@ -15,7 +15,6 @@ export function App() {
     return (
         <BrowserRouter>
             <Header />
-            <h1></h1>
             <Routes>
                 <Route path='/' element={<Profile />} />
                 <Route path='/:username' element={<Profile />} />

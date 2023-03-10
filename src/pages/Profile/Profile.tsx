@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom'
 import {
     Container,
     Main,
@@ -12,8 +13,50 @@ import {
 import ProfileData from "../../components/ProfileData/ProfileData";
 import RepositoryCard from "../../components/RepositoryCard/RepositoryCard";
 import CommitsCalendar from "../../components/CommitsCalendar/CommitsCalendar";
+import { BASE_URL } from '../../utils/url';
+import { APIUser, APIRepo } from '../../interfaces/user';
+
+interface Data {
+    user?: APIUser,
+    repos?: APIRepo[] | undefined,
+    error?: string;
+}
 
 const Profile: React.FC = () => {
+    const { userName = 'owitor' } = useParams();
+    const [data, setData] = useState<Data>()
+
+    // useApiData(`${BASE_URL}/${userName}`);
+    // useApiData(`${BASE_URL}/${userName}/repos`)
+
+
+    useEffect(() => {
+        Promise.all([
+            fetch(`${BASE_URL}/${userName}`),
+            fetch(`${BASE_URL}/${userName}/repos`)
+        ]).then(async (responses) => {
+            const [userResponse, respoResponse] = responses;
+
+            if (userResponse.status === 404) {
+                return setData({ error: 'Usuário não encontrado' });
+            }
+
+            const user = await userResponse.json();
+            const repos = await respoResponse.json();
+
+            const shuffledRepos = repos.sort(() => 0.50 - Math.random())
+
+
+            setData({
+                user,
+                repos: shuffledRepos.slice(0, 6)
+            })
+        })
+    }, [userName])
+
+
+    if (data?.error) <div>{data.error}</div>;
+    if (!data?.user || !data.repos) <h1>Caregando...</h1>;
 
     // TODO: extrair para componente separado
     const TabContent = () => {
@@ -21,12 +64,10 @@ const Profile: React.FC = () => {
             <div className="content">
                 <RepoIcon />
                 <span className="label">Repositorios</span>
-                <span className="number">64</span>
+                <span className="number">{data?.user?.public_repos}</span>
             </div>
         );
     };
-
-    const data = [1, 2, 3, 4, 5, 6];
 
     return (
         <Container>
@@ -41,15 +82,15 @@ const Profile: React.FC = () => {
             <Main>
                 <LeftSide>
                     <ProfileData
-                        username={"baggiovictor"}
-                        name={"Victor Baggio"}
-                        avatarUrl={"https://avatars.githubusercontent.com/u/65255655?v=4"}
-                        followers={200}
-                        following={10}
-                        company={"Totvs"}
-                        location={"Joinville, Brazil"}
-                        email={"baggiobaggiovictor@gmail.com"}
-                        blog={"linkedin.com/in/victorbaggio"}
+                        username={data?.user?.login}
+                        name={data?.user?.name}
+                        avatarUrl={data?.user?.avatar_url}
+                        followers={data?.user?.followers}
+                        following={data?.user?.following}
+                        company={data?.user?.company}
+                        location={data?.user?.location}
+                        email={data?.user?.email}
+                        blog={data?.user?.blog}
                     />
                 </LeftSide>
                 <RightSide>
@@ -61,18 +102,18 @@ const Profile: React.FC = () => {
                         <h2>Random repos</h2>
 
                         <div>
-                            {data.map((n) => {
+                            {data?.repos?.map((repo) => {
                                 return (
                                     <RepositoryCard
-                                        key={n}
-                                        username={"baggiovictor"}
-                                        reponame={"angular-apps"}
+                                        key={repo.name}
+                                        username={repo.owner.login}
+                                        reponame={repo.name}
                                         description={
-                                            "Repositorio criado para armazenar meus projetos angular"
+                                            repo.description
                                         }
-                                        language={n % 3 === 0 ? "Javascript" : "Typescript"}
-                                        stars={18}
-                                        forks={10}
+                                        language={repo.language}
+                                        stars={repo.stargazers_count}
+                                        forks={repo.forks}
                                     />
                                 );
                             })}

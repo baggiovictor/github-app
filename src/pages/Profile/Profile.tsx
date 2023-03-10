@@ -1,10 +1,13 @@
 import React from 'react'
-import { Container, Main, LeftSide, RightSide } from './styles';
+import { Container, Main, LeftSide, RightSide, RepoCard } from './styles';
 import ProfileData from '../../components/ProfileData/ProfileData';
+import RepositoryCard from '../../components/RepositoryCard/RepositoryCard';
 
 
 
 const Profile: React.FC = () => {
+    const data = [1, 2, 3, 4, 5, 6];
+
     return (
         <Container>
             <Main>
@@ -21,7 +24,27 @@ const Profile: React.FC = () => {
                         blog={'linkedin.com/in/victorbaggio'}
                     />
                 </LeftSide>
-                <RightSide></RightSide>
+                <RightSide>
+                    <RepoCard>
+                        <h2>Random repos</h2>
+
+                        <div>
+
+                            {data.map((n) => {
+                                return <RepositoryCard
+                                    key={n}
+                                    username={'baggiovictor'}
+                                    reponame={'angular-apps'}
+                                    description={'Repositorio criado para armazenar meus projetos angular'}
+                                    language={n % 3 === 0 ? 'Javascript' : 'Typescript'}
+                                    stars={18}
+                                    forks={10}
+
+                                />
+                            })}
+                        </div>
+                    </RepoCard>
+                </RightSide>
             </Main>
         </Container>
     );

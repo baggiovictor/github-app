@@ -31,7 +31,7 @@ export default createGlobalStyle`
         --gray-dark: #24292e;
         --orange: #f9826c;
         --logo: #fff;
-        --header: #24292e;
+        --header: #041325;
         --username: #666;
         --search: rgba(255, 255, 255, 0.13);
         --search-placeholder: hsla(0, 0%, 100%, .75);

@@ -95,7 +95,6 @@ export const Tab = styled.div`
   .line {
     display: flex;
     width: 200vw;
-    border-bottom: 1px solid var(--border);
 
     margin-left: -50vw;
   }

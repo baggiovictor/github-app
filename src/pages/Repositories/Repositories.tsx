@@ -18,7 +18,6 @@ const Repositories: React.FC = () => {
         fetch(`${BASE_URL_REPO}/${username}/${reponame}`).then(
 
             async (response) => {
-                console.log(response);
                 setData(
                     response.status === 404
                         ? { error: 'Repository not found!' }

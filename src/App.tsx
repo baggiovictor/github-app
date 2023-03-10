@@ -20,8 +20,6 @@ export function App() {
                 <Route path='/:username' element={<Profile />} />
                 <Route path='/:username/:reponame' element={<Repositories />} />
             </Routes>
-
-            {/* <Footer /> */}
             <GlobalStyles />
         </BrowserRouter>
     )

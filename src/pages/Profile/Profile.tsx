@@ -18,7 +18,7 @@ import { APIUser, APIRepo } from '../../interfaces/user';
 
 interface Data {
     user?: APIUser,
-    repos?: APIRepo[] | undefined,
+    repos?: APIRepo[],
     error?: string;
 }
 
@@ -26,10 +26,6 @@ const Profile: React.FC = () => {
     const { username } = useParams();
     const [data, setData] = useState<Data>()
     const location = useLocation();
-    console.log(location)
-    // useApiData(`${BASE_URL}/${userName}`);
-    // useApiData(`${BASE_URL}/${userName}/repos`)
-
 
     useEffect(() => {
         const userProfile = username ?? 'baggiovictor';
@@ -102,8 +98,6 @@ const Profile: React.FC = () => {
                         <span className="line" />
                     </Tab>
                     <RepoCard>
-                        <h2>Random repos</h2>
-
                         <div>
                             {data?.repos?.map((repo) => {
                                 return (

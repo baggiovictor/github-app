@@ -68,7 +68,7 @@ const Repositories: React.FC = () => {
                 </li>
             </Stats>
 
-            <LinkButton href={data.repo.html_url}>
+            <LinkButton target="_blank" href={data.repo.html_url}>
                 <GithubIcon />
                 <span>View on GitHub</span>
             </LinkButton>

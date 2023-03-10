@@ -2,13 +2,7 @@ import styled, { css } from "styled-components";
 import { RiBookMarkLine, RiStarLine } from "react-icons/ri";
 import { AiOutlineFork } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa";
-
-const iconCss = css`
-  width: 16px;
-  weight: 16px;
-  fill: var(--icon);
-  flex-shrink: 0;
-`;
+import { iconCss } from "../../styles/icons";
 
 export const Container = styled.div`
   display: flex;

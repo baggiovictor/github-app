@@ -9,15 +9,13 @@ const Header: React.FC = () => {
 
     function handleSubmit(event: React.FormEvent) {
         event.preventDefault();
-
         navigate('/' + search.toLowerCase().trim());
-        console.log(event)
     }
 
 
     return (
         <Container>
-            <GithubLogo data-testid="github-logo" />
+            <GithubLogo />
             <SearchForm onSubmit={handleSubmit}>
                 <input
                     placeholder="Digite um nome de usuário ou repositório"

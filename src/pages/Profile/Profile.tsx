@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import {
     Container,
     Main,
@@ -23,17 +23,20 @@ interface Data {
 }
 
 const Profile: React.FC = () => {
-    const { userName = 'owitor' } = useParams();
+    const { username } = useParams();
     const [data, setData] = useState<Data>()
-
+    const location = useLocation();
+    console.log(location)
     // useApiData(`${BASE_URL}/${userName}`);
     // useApiData(`${BASE_URL}/${userName}/repos`)
 
 
     useEffect(() => {
+        const userProfile = username ?? 'baggiovictor';
+
         Promise.all([
-            fetch(`${BASE_URL}/${userName}`),
-            fetch(`${BASE_URL}/${userName}/repos`)
+            fetch(`${BASE_URL}/${userProfile}`),
+            fetch(`${BASE_URL}/${userProfile}/repos`)
         ]).then(async (responses) => {
             const [userResponse, respoResponse] = responses;
 
@@ -52,7 +55,7 @@ const Profile: React.FC = () => {
                 repos: shuffledRepos.slice(0, 6)
             })
         })
-    }, [userName])
+    }, [username, location.key])
 
 
     if (data?.error) <div>{data.error}</div>;

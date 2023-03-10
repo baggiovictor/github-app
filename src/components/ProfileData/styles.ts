@@ -6,13 +6,7 @@ import {
   RiMailLine,
   RiLinksLine,
 } from "react-icons/ri";
-
-const iconCss = css`
-  width: 16px;
-  weight: 16px;
-  fill: var(--icon);
-  flex-shrink: 0;
-`;
+import { iconCss } from "../../styles/icons";
 
 export const Container = styled.div`
   display: flex;

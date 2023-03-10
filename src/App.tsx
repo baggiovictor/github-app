@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import GlobalStyles from './styles/GlobalStyles';
 import Profile from './pages/Profile/Profile';
-import Repository from './pages/Repository/Repository';
+import Repositories from './pages/Repositories/Repositories';
 import Header from './components/Header/Header';
 
 
@@ -19,7 +19,7 @@ export function App() {
             <Routes>
                 <Route path='/' element={<Profile />} />
                 <Route path='/:username' element={<Profile />} />
-                <Route path='/:username/:reponame' element={<Repository />} />
+                <Route path='/:username/:reponame' element={<Repositories />} />
             </Routes>
 
             {/* <Footer /> */}

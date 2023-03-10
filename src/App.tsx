@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 import GlobalStyles from './styles/GlobalStyles';
-import Header from './components/header/Header';
 import Profile from './pages/Profile/Profile';
 import Repository from './pages/Repository/Repository';
+import Header from './components/Header/Header';
 
 
 

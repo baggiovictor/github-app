@@ -17,8 +17,6 @@ export const Main = styled.div`
   }
 `;
 export const LeftSide = styled.div`
-  padding: 0 var(--horizontalPadding);
-
   @media (min-width: 768px) {
     width: 25%;
   }
@@ -51,4 +49,10 @@ export const RepoCard = styled.div`
       grid-template-columns: 1fr 1fr;
     }
   }
+`;
+
+export const HeadingCalendar = styled.span`
+  font-size: 16px;
+  margin: 36px 0 9px;
+  display: inline-flex;
 `;

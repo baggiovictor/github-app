@@ -1,7 +1,8 @@
 import React from 'react'
-import { Container, Main, LeftSide, RightSide, RepoCard } from './styles';
+import { Container, Main, LeftSide, RightSide, RepoCard, HeadingCalendar } from './styles';
 import ProfileData from '../../components/ProfileData/ProfileData';
 import RepositoryCard from '../../components/RepositoryCard/RepositoryCard';
+import CommitsCalendar from '../../components/CommitsCalendar/CommitsCalendar';
 
 
 
@@ -44,6 +45,13 @@ const Profile: React.FC = () => {
                             })}
                         </div>
                     </RepoCard>
+
+                    {/* TODO: (Esses dados só vem a v4 da api que é consumida com GRAHPQL) */}
+                    <HeadingCalendar>
+                        Contribuições no último ano
+                    </HeadingCalendar>
+
+                    <CommitsCalendar />
                 </RightSide>
             </Main>
         </Container>

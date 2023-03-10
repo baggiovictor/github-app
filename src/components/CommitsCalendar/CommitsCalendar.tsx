@@ -10,8 +10,6 @@ const CommitsCalendar: React.FC = () => {
     const startDate = subYears(new Date(), 1)
     const endDate = new Date();
 
-
-
     return (
         <Container>
             <div className='wrapper'>
@@ -40,6 +38,7 @@ const CommitsCalendar: React.FC = () => {
     );
 }
 
+// Função criada para gerar dados no calendário, o ideal seria desacoplar essa funcão deste componente.
 const generateHeatMapValues = (startDate: Date, endDate: Date) => {
     const values: HeatMapValue[] = [];
 
